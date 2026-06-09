@@ -7,7 +7,7 @@ Welcome to **ping-to-packet**! This repository serves as my network engineering 
 *   **/lorawan**: Scripts for IoT monitoring and gateway status checks.
 *   **/ccna**: Automation utilities, configurations, and scripts for Cisco lab prep.
 *   **/utils**: General purpose Bash and Python scripts for system administration.
-    *	**/cheatheets**: Searchable reference documents for troubleshooting
+    *	**/cheatsheets**: Searchable reference documents for troubleshooting
     *   **/sandbox**: A testing ground for messy, half-baked code and experiments.
 
 ## 🛠️ Languages Used
