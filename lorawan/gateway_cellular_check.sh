@@ -11,7 +11,7 @@ echo "Running on $HOST at $(date)"
 # Step 1: Interface status
 echo ""
 echo "1. Interface wwan0 status:"
-ip link show wwan0 2>/dev/null | grep "state UP" >/dev/null
+ip link show wwan0 2>/dev/null | grep -E "<[^>]*UP,LOWER_UP[^>]*>" >/dev/null
 [ $? -eq 0 ] && echo "   wwan0 is UP" || echo "   wwan0 is DOWN or not 
 found"
 
