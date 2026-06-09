@@ -34,25 +34,17 @@ else
   echo "   No valid IP assigned"
 fi
 
-# NOTE: Removing this step to remove confusion, since Cell IPs are assigned dynamically
-# Step 3: IP assignment type 
-# echo ""
-# echo "3. IP Assignment Type:"
-# ps | grep "udhcpc.*wwan0" | grep -v grep >/dev/null
-# [ $? -eq 0 ] && echo "   wwan0 is using DHCP (udhcpc is active)" || echo "   
-# wwan0 is likely using a static IP"
-
-# Step 4: Default Gateway
-DEFAULT_GW=$(ip route show dev wwan0 | grep "default" | awk '{print $3}')
+# Step 3: Ping Google's DNS IP to test if Cellular Path can reach Internet
+GOOGLE_IP=8.8.8.8
 echo ""
-echo "4. Default Gateway: $DEFAULT_GW"
-ping -c 2 -I wwan0 -W 2 $DEFAULT_GW >/dev/null 2>&1
-[ $? -eq 0 ] && echo "   Ping Test to $DEFAULT_GW is Reachable" || echo "   
-Ping Test to $DEFAULT_GW is Unreachable"
+echo "3. Test Internet Connectivity with Google DNS IP: $GOOGLE_IP"
+ping -c 2 -I wwan0 -W 2 $GOOGLE_IP >/dev/null 2>&1
+[ $? -eq 0 ] && echo "   Ping Test to $GOOGLE_IP is Reachable" || echo "   
+Ping Test to $GOOGLE_IP is Unreachable"
 
-# Step 5: Connectivity Test to Hostnames via wwan0
+# Step 4: Connectivity Test to Hostnames via wwan0
 echo ""
-echo "5. Connectivity Test to Hostnames via wwan0:"
+echo "4. Connectivity Test to Hostnames via wwan0:"
 for HOSTNAME in google.com centegix.wisdm.rakwireless.com centegix.com; do
   for PORT in 80 443; do
     nc -zvw2 $HOSTNAME $PORT >/dev/null 2>&1
@@ -64,9 +56,9 @@ for HOSTNAME in google.com centegix.wisdm.rakwireless.com centegix.com; do
   done
 done
 
-# Step 6: Active connections (filtered by wwan0 IP)
+# Step 5: Active connections (filtered by wwan0 IP)
 echo ""
-echo "6. Active Connections (Bound to $CELL_IP):"
+echo "5. Active Connections (Bound to $CELL_IP):"
 if [ -n "$CELL_IP" ]; then
   netstat -anp 2>/dev/null | grep "$CELL_IP" | sed 's/^/   /'
 else
