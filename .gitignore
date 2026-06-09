@@ -6,6 +6,9 @@ __pycache__/
 # macOS specific files
 .DS_Store
 
+# Packet Tracer backups
+*.bak
+
 # C extensions
 *.so
 
