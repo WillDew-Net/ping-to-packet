@@ -1,4 +1,5 @@
 #!/bin/sh
+# This script was originally written by Ashton Soles (asoles23 on github)
 
 echo ""
 echo "===== Centegix Gateway Connectivity Check ====="
