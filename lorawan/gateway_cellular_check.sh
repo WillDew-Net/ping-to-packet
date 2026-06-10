@@ -3,9 +3,17 @@
 echo ""
 echo "===== Centegix Gateway Connectivity Check ====="
 
+# Function for getting EUI 
+function get_gateway_id(){
+    # find file location that has gateway_id: /etc/config/lora_pkt_fwd
+    # extract gateway_id
+    # echo gateway_id 
+}
+
 # Step 0: Hostname and time
 HOST=$(hostname 2>/dev/null)
 [ -z "$HOST" ] && HOST="unknown"
+# NOTE: add conditional to call get_gateway_id() if there's no hostname
 echo "Running on $HOST at $(date)"
 
 # Step 1: Interface status
