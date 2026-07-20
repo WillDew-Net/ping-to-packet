@@ -1,19 +1,21 @@
 # Milestone 01: Home Wireless Infrastructure Mesh Migration
 
 ## Executive Summary
-[Copy and paste your catchy LinkedIn introduction here! State what the project was, why you did it, and the ultimate high-level result.]
+Moving into a new home always comes with unique challenges. In my case, a single upstairs coaxial port meant my gateway router was bottlenecked on the top floor. This caused severe Wi-Fi dropouts and massive throughput loss downstairs in my office space.
+
+Instead of just accepting a weak signal, I decided to treat this as a hands-on extension of my IT networking studies!
 
 ## The Problem & Motivation
-* **The Legacy Setup:** [Briefly describe what you had before—e.g., standard ISP router in the living room.]
-* **The Issues:** [Explain the pain points—e.g., dead zones in the office, high latency during SSH connections, or poor throughput.]
-* **Objective:** Establish a seamless wireless roaming matrix across the entire living space to support a virtualization homelab environment.
+* **The Legacy Setup:** Initially, my network consisted of an xfinity gateway with all devices connected to it wirelessly. 
+* **The Issues:** Due to the gateway being upstairs, the signal would degrade significantly as it tried to penetrate walls and floors using the 5Ghz frequency band. This prevented me from being able to stream shows in the living room, play online games in my office, or build out my homelab. I cosidered hiring an electrician to add a coaxial port downstairs, but the quote I received was expensive and likely would have just moved my deadzone from dowwnstairs to upstairs. I'd hardly consider that a solution.
+* **Objective:** Upgrade my home network to allow device connectivity throughout my home. Devices should be able to connect to the internet no matter where they're located in my house, as long as they're connected to my network. 
 
 ## Physical Network Architecture
-* **Hardware Deployed:** [List the specific brand/model of your new mesh nodes.]
-* **Placement Strategy:** [Briefly explain where you placed them and why to optimize coverage between the living room and office.]
+* **Hardware Deployed:** Deco Wi-Fi 7 BE11000 Tri-Band Mesh System
+* **Placement Strategy:** I purposely ordered a pack of 3 mesh nodes to tackle the main pain points of the signal degredation. Plugging my main mesh node into the gateway allowed that original signal to pass on to the mesh node, allowing the main node to essentially replace the original gateway. From there, the additional nodes spread throughout my home could connect to the main node using the 5GHz and 6GHz frequency bands. Wi-Fi 7 hardware has better antennas and can push signals on these bands through obstacles with little issue, so the slower 2.4GHz band isn't the only option for node-to-node communication through obstructions. Now when devices connect to the nearest (strongest) mesh node, they don't have to send data through so many layers of building material. Data is sent from the device to the nearby node, and then that data is adequately transmitted to the main node using the 2.4GHz, 5GHz, and 6GHz bands with data packets split between each band. In addition, the mesh nodes come with ethernet ports and I was able to create a small LAN in my office space for my homelab 
 
 ## Telemetry & Performance Metrics (Before vs. After)
-To validate the migration, throughput testing was conducted on [Name of your testing device] before and after the deployment.
+To validate the migration, throughput testing was conducted on playstation 5 before and after the deployment.
 
 | Metric | Legacy ISP Router | New Mesh Infrastructure | Delta (%) |
 | :--- | :--- | :--- | :--- |
